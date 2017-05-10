@@ -1,8 +1,17 @@
-# node-js-getting-started
+# Basic redirect for android-rest-client-template
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+This NodeJS app is meant to be used with the [android-rest-client-template](github.com/codepath/android-rest-client-template) app.
 
-This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+Because Chrome for Android now prevents JavaScript redirects within a browser from launching an app, this workaround functions as a redirect
+proxy.
+
+There are scheme= & host= parameters extracted from the GET parameter.  The rest of the query parameters are passed through the 302 redirect.
+
+i.e.:
+
+curl -I "http://localhost:5000/?name=tom&age=55&scheme=bla&host=youtube"
+
+Redirect 302 to: bla://youtube?name=tom&age=55
 
 ## Running Locally
 
@@ -27,13 +36,3 @@ $ heroku open
 or
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-## Documentation
-
-For more information about using Node.js on Heroku, see these Dev Center articles:
-
-- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
-- [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
