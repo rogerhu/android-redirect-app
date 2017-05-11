@@ -12,10 +12,12 @@ app.get('/', function(request, response) {
 app.get('/bounce', function(request, response) {
   var scheme = request.query.scheme || "oauth";
   var host = request.query.host || "cprest";
+  var pkg = request.query.pkg || "com.codepath.apps.restclienttemplate";
 
   delete request.query.scheme;
   delete request.query.host;
-  var return_url = scheme + "://" + host;
+  delete request.query.pkg;
+  var return_url = "intent://" + host + "#Intent;scheme=" + scheme + ";package=" + pkg + ";end";
 
   if (typeof(request.query) !== undefined) {
      return_url += "?" + querystring.stringify(request.query);
